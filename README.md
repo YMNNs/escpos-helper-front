@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# ESC/POS 打印小助手
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+轻松通过浏览器连接ESC/POS打印机，需要搭配[后端程序](https://github.com/ymnns/escpos-helper-backend)使用
 
-## Available Scripts
+## 为什么需要后端程序？
 
-In the project directory, you can run:
+要想向打印机中写入数据，就需要建立TCP Socket连接，而浏览器并没有这种API。
 
-### `npm start`
+## 功能
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+当前版本支持以下的功能，未被勾选的功能将在后续版本实现
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [x] 打印文本（包括汉字）
+- [x] 调整字符大小和对齐方式
+- [x] 连接打印机（暂时只支持以太网）
+- [x] 查阅历史记录
+- [x] 通过链接快速设置
+- [x] 测试设置有效性
+- [x] 将设置导出为**印有二维码的纸条**:sparkles:
+- [ ] 调整文本列表的顺序
+- [ ] 标签模板
+- [ ] 支持USB、串口和并口
+- [ ] 打印二维码和图片
 
-### `npm test`
+## 前端技术栈
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
++ React
++ React Router
++ Redux
++ Axios
++ Ant Design Mobile
 
-### `npm run build`
+## 快速入门
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 安装
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```shell
+$ npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 编译
 
-### `npm run eject`
+```shell
+$ npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 运行
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```shell
+$ serve build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 部署后端
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+请参阅[后端程序](https://github.com/ymnns/escpos-helper-backend)
 
-## Learn More
+### 注意事项
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+设置中的`服务器URL`需以`http`开头，`打印机URL`应设置为服务器可访问的地址。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> 一般情况下，通过以太网连接的ESC/POS打印机开启9100端口。
