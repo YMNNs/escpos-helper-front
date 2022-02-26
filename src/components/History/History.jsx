@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect, useStore } from 'react-redux'
-import { Ellipsis, Empty, List, SwipeAction } from 'antd-mobile'
+import { Dialog, Ellipsis, Empty, List, SwipeAction } from 'antd-mobile'
 import { useNavigate } from 'react-router-dom'
 import { deleteHistory } from '../../redux/actions/history'
 import { updateTitle } from '../../redux/actions/title'
@@ -35,10 +35,19 @@ const History = (props) => {
                     }]
                 }
               >
-                <List.Item onClick={() => {
-                  props.setBlocks(store.getState().history.find(i => i.id === item.id).data)
-                  navigate('/blocks')
-                }}
+                <List.Item onClick={
+                  async () => {
+                    const result = await Dialog.confirm({
+                      content: '将会使用当前的历史记录替换文本列表'
+                    })
+                    if (result) {
+                      props.setBlocks(store.getState().history.find(i => i.id === item.id).data)
+                      navigate('/blocks')
+                    }
+                  }
+
+                }
+
                 >
                   <Ellipsis direction='end' content={item.time} />
                 </List.Item>

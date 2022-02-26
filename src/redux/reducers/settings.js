@@ -1,6 +1,6 @@
 import { UPDATE_SETTINGS } from '../constant'
 
-const initState = JSON.parse(localStorage.getItem('settings')) || { serverUrl: undefined, printerUrl: undefined }
+const initState = JSON.parse(localStorage.getItem('settings')) || { serverUrl: undefined, printerUrl: undefined, clearAfterPrint: true }
 
 export default (preState = initState, action) => {
   const { type, data } = action

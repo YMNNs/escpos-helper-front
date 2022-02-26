@@ -69,7 +69,7 @@ const InputBlock = (props) => {
         <Form.Item name='lf' label='以换行符结尾' help='开启时下一个文本块将从新的一行开始' >
           <Switch defaultChecked={lf} onChange={setLf}/>
         </Form.Item>
-        <Form.Item name="align" label="对齐方式" initialValue={[1]}>
+        <Form.Item name="align" label="对齐方式" initialValue={[align]}>
           <Selector
             options={[
               {

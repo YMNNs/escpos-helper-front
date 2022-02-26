@@ -46,7 +46,7 @@ const Nav = (props) => {
           } else {
             Toast.show({
               icon: 'fail',
-              content: '打印失败，请检查网络'
+              content: '打印失败，请检查配置'
             })
           }
         }, (err) => {
@@ -56,7 +56,9 @@ const Nav = (props) => {
           })
         })
         props.addHistory(props.blocks)
-        props.setBlocks([])
+        if (store.getState().settings.clearAfterPrint) {
+          props.setBlocks([])
+        }
       }
     },
     {
